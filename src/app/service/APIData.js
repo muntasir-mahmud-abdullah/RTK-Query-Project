@@ -12,7 +12,15 @@ export const postsApi = createApi({
         getPostById: builder.query({
             query: (id) => `/posts/${id}`,
         }),
+        addNewPost: builder.mutation({
+            query: (newPost) => ({
+                url: "/posts",
+                method: "POST",
+                header: { "Content-Type": "Application/json" },
+                body: newPost,
+            })
+        })
     }),
 });
 
-export const { useGetAllPostsQuery, useGetPostByIdQuery } = postsApi;
+export const { useGetAllPostsQuery, useGetPostByIdQuery, useAddNewPostMutation } = postsApi;
