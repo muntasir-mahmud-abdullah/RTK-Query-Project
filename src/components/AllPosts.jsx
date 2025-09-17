@@ -2,7 +2,7 @@ import { useGetAllPostsQuery } from "../app/service/APIData";
 
 export default function AllPosts() {
   const { data, isError, isLoading } = useGetAllPostsQuery();
-  console.log(data);
+//   console.log(data);
   if (isError) {
     return <h1>Oh I have and error</h1>;
   }
@@ -12,10 +12,10 @@ export default function AllPosts() {
   return (
     <div>
       <h1>All Posts</h1>
-      {data.map((p) => (
+      {data.map((p,index) => (
         <>
           <h2 key={p.id}>{p.title}</h2>
-          <p>{p.body}</p>
+          <p key={index}>{p.body}</p>
         </>
       ))}
     </div>
