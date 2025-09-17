@@ -19,8 +19,22 @@ export const postsApi = createApi({
                 header: { "Content-Type": "Application/json" },
                 body: newPost,
             })
+        }),
+        updatePost: builder.mutation({
+            query: ({id, updatedPost}) => ({
+                url: `/posts/${id}`,
+                method: "PUT",
+                header: { "Content-Type": "Application/json" },
+                body: updatedPost,
+            })
+        }),
+        deletePost: builder.mutation({
+            query:(id) => ({
+                url: `/posts/${id}`,
+                method: "DELETE",
+            })
         })
     }),
 });
 
-export const { useGetAllPostsQuery, useGetPostByIdQuery, useAddNewPostMutation } = postsApi;
+export const { useGetAllPostsQuery, useGetPostByIdQuery, useAddNewPostMutation, useUpdatePostMutation, useDeletePostMutation } = postsApi;
