@@ -11,10 +11,13 @@ export default function AllPosts() {
   }
   return (
     <div>
-        <h1>All Posts title</h1>
-      {data.map((p) => {
-      return  <p key={p.id}>{p.title}</p>;
-      })}
+      <h1>All Posts</h1>
+      {data.map((p) => (
+        <>
+          <h2 key={p.id}>{p.title}</h2>
+          <p>{p.body}</p>
+        </>
+      ))}
     </div>
   );
 }
